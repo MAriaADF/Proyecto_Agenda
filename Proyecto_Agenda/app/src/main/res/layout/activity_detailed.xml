@@ -10,15 +10,10 @@
     tools:context="com.example.hellen.proyecto_agenda.MainActivity">
 
     <ImageButton
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_stat_nueva"
-        android:id="@+id/imageButton2"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:baselineAlignBottom="false"
-        android:clickable="false"
-        android:adjustViewBounds="false" />
+        android:id="@+id/imageButton"
+        android:layout_above="@+id/listView" />
 
     <ListView
         android:layout_width="wrap_content"
