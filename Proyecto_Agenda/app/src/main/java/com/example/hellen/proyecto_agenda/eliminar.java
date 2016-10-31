@@ -19,7 +19,7 @@ public class eliminar extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_eliminar);
+        setContentView(R.layout.activity_main);
         elimina_input = (EditText) findViewById(R.id.modificar_input);
         dbHandler = new MyDBHandler(this, null, null, 1);
     }

@@ -15,12 +15,10 @@ import android.widget.EditText;
 public class modificar extends ActionBarActivity {
 
     MyDBHandler dbHandler;
-    EditText nombre_input;
-    EditText apellido_input;
-    EditText edad_input;
-    EditText telefono_input;
-    EditText email_input;
-    EditText sangre_input;
+    EditText txt_T;
+    EditText txt_Hora;
+    EditText txt_Lugar;
+    EditText txt_Descrip;
     int idglobal;
 
     @Override
@@ -29,34 +27,30 @@ public class modificar extends ActionBarActivity {
         //Aqui se hace el retrieve de la base de datos tomando un valor que viene en el intent anterior
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_modificar);
-        nombre_input = (EditText) findViewById(R.id.nombre_input);
-        apellido_input = (EditText) findViewById(R.id.apellido_input);
-        edad_input = (EditText) findViewById(R.id.edad_input);
-        telefono_input = (EditText) findViewById(R.id.telefono_input);
-        email_input = (EditText) findViewById(R.id.email_input);
-        sangre_input = (EditText) findViewById(R.id.sangre_input);
+        setContentView(R.layout.activity_insert);
+        txt_T = (EditText) findViewById(R.id.txt_T);
+        txt_Hora = (EditText) findViewById(R.id.txt_Hora);
+        txt_Lugar = (EditText) findViewById(R.id.txt_Lugar);
+        txt_Descrip = (EditText) findViewById(R.id.txt_Descrip);
         dbHandler = new MyDBHandler(this, null, null, 1);
-        Personas persona = new Personas();
+        Datos persona = new Datos();
         Intent i = getIntent(); // gets the previously created intent
         String stringid = i.getStringExtra("id_persona");
         int id = Integer.parseInt(stringid);
         Cursor c = dbHandler.personabyid(id);
 
     //Vuelve a rellenar los inputs con los valores del cursor
-        nombre_input.setText(c.getString(c.getColumnIndexOrThrow("nombre")));
-        apellido_input.setText(c.getString(c.getColumnIndexOrThrow("apellido")));
-        edad_input.setText(c.getString(c.getColumnIndexOrThrow("edad")));
-        telefono_input.setText(c.getString(c.getColumnIndexOrThrow("telefono")));
-        email_input.setText(c.getString(c.getColumnIndexOrThrow("email")));
-        sangre_input.setText(c.getString(c.getColumnIndexOrThrow("tiposangre")));
-        idglobal = c.getInt(c.getColumnIndexOrThrow("_id"));
+        txt_T.setText(c.getString(c.getColumnIndexOrThrow("Titulo")));
+        txt_Hora.setText(c.getString(c.getColumnIndexOrThrow("Hora")));
+        txt_Lugar.setText(c.getString(c.getColumnIndexOrThrow("Lugar")));
+        txt_Descrip.setText(c.getString(c.getColumnIndexOrThrow("Descripcion")));
+        idglobal = c.getInt(c.getColumnIndexOrThrow("Id_Datos"));
 
     }
 
     public void modificar_clicked(View view){
 
-        Personas persona = new Personas(nombre_input.getText().toString(), apellido_input.getText().toString(), Integer.parseInt(edad_input.getText().toString()), telefono_input.getText().toString(), email_input.getText().toString(), sangre_input.getText().toString() );
+        Datos persona = new Datos(txt_T.getText().toString(), Integer.parseInt( txt_Hora.getText().toString()), txt_Lugar.getText().toString(),txt_Descrip.getText().toString());
         persona.set_id(idglobal);
         dbHandler.updatepersona(persona);
         confirmacion();
@@ -83,12 +77,10 @@ public class modificar extends ActionBarActivity {
     //Limpia los valores entrados para efectos de estetica
     public void limpiarcampos(){
 
-        nombre_input.setText("");
-        apellido_input.setText("");
-        edad_input.setText("");
-        telefono_input.setText("");
-        email_input.setText("");
-        sangre_input.setText("");
+        txt_T.setText("");
+        txt_Hora.setText("");
+        txt_Lugar.setText("");
+        txt_Descrip.setText("");
 
     }
 

@@ -11,25 +11,21 @@ import android.widget.EditText;
 public class Agregar extends ActionBarActivity {
 
     MyDBHandler dbHandler;
-    EditText nombre_input;
-    EditText apellido_input;
-    EditText edad_input;
-    EditText telefono_input;
-    EditText email_input;
-    EditText sangre_input;
+    EditText txt_T;
+    EditText txt_Hora;
+    EditText txt_Lugar;
+    EditText txt_Descrip;
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_agregar);
-        nombre_input = (EditText) findViewById(R.id.nombre_input);
-        apellido_input = (EditText) findViewById(R.id.apellido_input);
-        edad_input = (EditText) findViewById(R.id.edad_input);
-        telefono_input = (EditText) findViewById(R.id.telefono_input);
-        email_input = (EditText) findViewById(R.id.email_input);
-        sangre_input = (EditText) findViewById(R.id.sangre_input);
+        setContentView(R.layout.activity_insert);
+        txt_T = (EditText) findViewById(R.id.txt_T);
+        txt_Hora = (EditText) findViewById(R.id.txt_Hora);
+        txt_Lugar = (EditText) findViewById(R.id.txt_Lugar);
+        txt_Descrip = (EditText) findViewById(R.id.txt_Descrip);
         dbHandler = new MyDBHandler(this, null, null, 1);
     }
 
@@ -37,22 +33,20 @@ public class Agregar extends ActionBarActivity {
 
    public void agregar_clicked(View view){
 
-    Personas persona = new Personas(nombre_input.getText().toString(), apellido_input.getText().toString(), Integer.parseInt(edad_input.getText().toString()), telefono_input.getText().toString(), email_input.getText().toString(), sangre_input.getText().toString() );
-    dbHandler.addPersona(persona);
-    confirmacion();
-    limpiarcampos();
+    Datos persona = new Datos( txt_T.getText().toString(), Integer.parseInt( txt_Hora.getText().toString()), txt_Lugar.getText().toString(),txt_Descrip.getText().toString());
+       dbHandler.addPersona(persona);
+       confirmacion();
+       limpiarcampos();
    }
 
 
    //Limpia los valores entrados para efectos de estetica
    public void limpiarcampos(){
 
-       nombre_input.setText("");
-       apellido_input.setText("");
-       edad_input.setText("");
-       telefono_input.setText("");
-       email_input.setText("");
-       sangre_input.setText("");
+       txt_T.setText("");
+       txt_Hora.setText("");
+       txt_Lugar.setText("");
+       txt_Descrip.setText("");
 
    }
 

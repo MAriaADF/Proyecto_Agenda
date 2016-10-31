@@ -9,7 +9,7 @@ import android.widget.CursorAdapter;
 import android.widget.TextView;
 
 /**
- * Created by A on 01/05/2015.
+ * Created by Hellen Lopez on 01/05/2015.
  */
 
 

@@ -15,6 +15,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Agregar"
+            android:label="agregar" >
+        </activity>
+        <activity
+            android:name=".BuscarPersona"
+            android:label="buscar_persona"
+            android:windowSoftInputMode="stateHidden" >
+        </activity>
+        <activity
+            android:name=".eliminar"
+            android:label="eliminar" >
+        </activity>
+        <activity
+            android:name=".pre_modificar"
+            android:label="pre_modificar" >
+        </activity>
+        <activity
+            android:name=".modificar"
+            android:label="modificar" >
+        </activity>
     </application>
 
 </manifest>
